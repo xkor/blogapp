@@ -4,15 +4,16 @@ from .models import Post, Tag
 from .mixins import ObjectListView
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 
 
-class PostListView(ObjectListView):
+class PostListView(ObjectListView, View):
     model = Post
     template = 'blog/index.html'
     queryset = Post.objects.all()
 
 
-class TagListView(ObjectListView):
+class TagListView(ObjectListView, View):
     model = Tag
     template = 'blog/tags_list.html'
     queryset = Tag.objects.annotate(posts_count=Count('posts'))
