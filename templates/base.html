@@ -26,10 +26,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'tags_list_url' %}">Tags</a>
             </li>
-            {% if request.user.is_superuser %}
+            {% if request.user.is_authenticated %}
               <li class="nav-item">
                   <a class="nav-link" href="{% url 'post_create_view' %}">ADD POST</a>
               </li>
+                <li><a href="{% url 'logout_url' %}">Logout</a></li>
             {% endif %}
           </ul>
         </div>

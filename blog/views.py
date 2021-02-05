@@ -19,6 +19,11 @@ class TagListView(ObjectListView, View):
     queryset = Tag.objects.annotate(posts_count=Count('posts'))
 
 
+def tag_list_view(request):
+    tags = Tag.objects.annotate(posts_count=Count('posts'))
+    return render(request, 'blog/tags_list.html', context={'tags': tags})
+
+
 def post_detail_view(request, slug):
     post = Post.objects.get(slug__iexact=slug)
     return render(request, 'blog/post_detail.html', context={'post': post})

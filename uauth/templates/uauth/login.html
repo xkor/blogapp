@@ -1,0 +1,22 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    {{ block.super }} | LOGIN PAGE
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'login_url' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="phone_number">
+            <div id="emailHelp" class="form-text">misol uchun: 998909949564</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login qilish</button>
+    </form>
+{% endblock %}
